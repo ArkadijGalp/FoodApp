@@ -1,9 +1,10 @@
-package space.arkady.foodapp
+package space.arkady.foodapp.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import space.arkady.foodapp.R
 import space.arkady.foodapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

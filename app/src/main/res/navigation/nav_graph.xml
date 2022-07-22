@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="space.arkady.foodapp.HomeFragment"
+        android:name="space.arkady.foodapp.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="space.arkady.foodapp.FavoritesFragment"
+        android:name="space.arkady.foodapp.ui.fragments.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="space.arkady.foodapp.CategoriesFragment"
+        android:name="space.arkady.foodapp.ui.fragments.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
 </navigation>
