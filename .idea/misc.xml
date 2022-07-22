@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/drawable/ic_area.xml" value="0.201" />
+        <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/drawable/ic_youtube.xml" value="0.201" />
         <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/font/fonts.xml" value="0.2791666666666667" />
         <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
-        <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/layout/activity_meal.xml" value="0.25" />
+        <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/layout/activity_meal.xml" value="0.22210526315789475" />
         <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/layout/fragment_categories.xml" value="0.10989583333333333" />
         <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/layout/fragment_favorites.xml" value="0.10989583333333333" />
         <entry key="..\:/ProjectsReworks/FoodApp/app/src/main/res/layout/fragment_home.xml" value="0.2" />
