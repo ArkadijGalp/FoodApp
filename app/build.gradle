@@ -54,6 +54,11 @@ dependencies {
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
+    //videoModel mvvm
+    def lifecycle_version = "2.6.0-alpha01"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "android.arch.lifecycle:extensions:1.1.1"
 
 //scalable unit for texts
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
