@@ -8,13 +8,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import space.arkady.foodapp.data.RetrofitInstance
+import space.arkady.foodapp.database.MealDatabase
 import space.arkady.foodapp.models.*
 
-class HomeViewModel() : ViewModel() {
+class HomeViewModel(private val mealDatabase: MealDatabase) : ViewModel() {
 
     private var randomMealLiveData = MutableLiveData<Meal>()
     private var popularItemsLiveData = MutableLiveData<List<MealsByCategory>>()
     private var categoriesLiveData = MutableLiveData<List<Category>>()
+    private var favoriteMealsLiveData = mealDatabase.mealDao().getAllMeals()
 
     fun getRandomMeal() {
         RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealList> {
@@ -61,6 +63,10 @@ class HomeViewModel() : ViewModel() {
 
     fun observeCategoriesLiveData(): LiveData<List<Category>> {
         return categoriesLiveData
+    }
+
+    fun observeFavoriteMealsLiveData(): LiveData<List<Meal>> {
+        return favoriteMealsLiveData
     }
 
     fun getCategories() {
