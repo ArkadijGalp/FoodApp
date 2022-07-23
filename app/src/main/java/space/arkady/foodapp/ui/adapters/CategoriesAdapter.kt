@@ -35,7 +35,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
         holder.binding.tvCategoryName.text = categoriesList[position].strCategory
 
         holder.itemView.setOnClickListener {
-            onItemClick!!.invoke(categoriesList[position])
+            onItemClick?.invoke(categoriesList[position])
         }
     }
 
