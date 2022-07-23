@@ -8,15 +8,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import space.arkady.foodapp.data.RetrofitInstance
-import space.arkady.foodapp.models.CategoryList
-import space.arkady.foodapp.models.CategoryMeals
-import space.arkady.foodapp.models.Meal
-import space.arkady.foodapp.models.MealList
+import space.arkady.foodapp.models.*
 
 class HomeViewModel() : ViewModel() {
 
     private var randomMealLiveData = MutableLiveData<Meal>()
-    private var popularItemsLiveData = MutableLiveData<List<CategoryMeals>>()
+    private var popularItemsLiveData = MutableLiveData<List<MealsByCategory>>()
+    private var categoriesLiveData = MutableLiveData<List<Category>>()
 
     fun getRandomMeal() {
         RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealList> {
@@ -35,25 +33,48 @@ class HomeViewModel() : ViewModel() {
     }
 
     fun getPopularItems() {
-        RetrofitInstance.api.getPopularItems("Seafood").enqueue(object : Callback<CategoryList> {
-            override fun onResponse(call: Call<CategoryList>, response: Response<CategoryList>) {
-                if (response.body() != null) {
-                    popularItemsLiveData.value = response.body()!!.meals
+        RetrofitInstance.api.getPopularItems("Seafood")
+            .enqueue(object : Callback<MealsByCategoryList> {
+                override fun onResponse(
+                    call: Call<MealsByCategoryList>,
+                    response: Response<MealsByCategoryList>
+                ) {
+                    if (response.body() != null) {
+                        popularItemsLiveData.value = response.body()!!.meals
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<CategoryList>, t: Throwable) {
-                Log.d("HomeFragment", t.message.toString())
-            }
+                override fun onFailure(call: Call<MealsByCategoryList>, t: Throwable) {
+                    Log.d("HomeFragment", t.message.toString())
+                }
 
-        })
+            })
     }
 
     fun observeRandomMealLiveData(): LiveData<Meal> {
         return randomMealLiveData
     }
 
-    fun observePopularMealsLiveData(): LiveData<List<CategoryMeals>> {
+    fun observePopularMealsLiveData(): LiveData<List<MealsByCategory>> {
         return popularItemsLiveData
+    }
+
+    fun observeCategoriesLiveData(): LiveData<List<Category>> {
+        return categoriesLiveData
+    }
+
+    fun getCategories() {
+        RetrofitInstance.api.getCategories().enqueue(object : Callback<CategoryList> {
+            override fun onResponse(call: Call<CategoryList>, response: Response<CategoryList>) {
+                response.body()?.let { categoryList ->
+                    categoriesLiveData.postValue(categoryList.categories)
+                }
+            }
+
+            override fun onFailure(call: Call<CategoryList>, t: Throwable) {
+                Log.e("HomeViewModel", t.message.toString())
+            }
+
+        })
     }
 }
