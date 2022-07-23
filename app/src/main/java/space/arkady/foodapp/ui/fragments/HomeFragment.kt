@@ -18,6 +18,7 @@ import space.arkady.foodapp.ui.activities.MainActivity
 import space.arkady.foodapp.ui.activities.MealActivity
 import space.arkady.foodapp.ui.adapters.CategoriesAdapter
 import space.arkady.foodapp.ui.adapters.MostPopularAdapter
+import space.arkady.foodapp.ui.fragments.bottomsheet.MealBottomSheetFragment
 import space.arkady.foodapp.ui.viewmodels.HomeViewModel
 
 
@@ -70,6 +71,15 @@ class HomeFragment : Fragment() {
         observeCategoriesLiveData()
         onCategoriesClick()
 
+        onPopularItemLongClick()
+
+    }
+
+    private fun onPopularItemLongClick() {
+        popularItemsAdapter.onLongItemClick = { meal ->
+            val mealBottomSheetFragment = MealBottomSheetFragment.newInstance(meal.idMeal)
+            mealBottomSheetFragment.show(childFragmentManager, "Meal Info")
+        }
     }
 
     private fun onCategoriesClick() {
