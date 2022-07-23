@@ -119,4 +119,5 @@ class MealActivity : AppCompatActivity() {
         binding.imageYoutube.visibility = View.VISIBLE
 
     }
+
 }
