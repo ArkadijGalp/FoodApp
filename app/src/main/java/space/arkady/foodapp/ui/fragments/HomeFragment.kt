@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import space.arkady.foodapp.databinding.FragmentHomeBinding
 import space.arkady.foodapp.models.MealsByCategory
 import space.arkady.foodapp.models.Meal
+import space.arkady.foodapp.ui.activities.CategoryMealsActivity
 import space.arkady.foodapp.ui.activities.MealActivity
 import space.arkady.foodapp.ui.adapters.CategoriesAdapter
 import space.arkady.foodapp.ui.adapters.MostPopularAdapter
@@ -33,6 +34,7 @@ class HomeFragment : Fragment() {
         const val MEAL_ID = "space.arkady.foodapp.ui.fragments.idMeal"
         const val MEAL_NAME = "space.arkady.foodapp.ui.fragments.nameMeal"
         const val MEAL_THUMB = "space.arkady.foodapp.ui.fragments.thumbMeal"
+        const val CATEGORY_NAME = "space.arkady.foodapp.ui.fragments.categoryName"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +69,16 @@ class HomeFragment : Fragment() {
         prepareCategoriesRecyclerView()
         homeMvvm.getCategories()
         observeCategoriesLiveData()
+        onCategoriesClick()
 
+    }
+
+    private fun onCategoriesClick() {
+        categoriesAdapter.onItemClick = { category ->
+            val intent = Intent(activity, CategoryMealsActivity::class.java)
+            intent.putExtra(CATEGORY_NAME, category.strCategory)
+            startActivity(intent)
+        }
     }
 
     private fun prepareCategoriesRecyclerView() {

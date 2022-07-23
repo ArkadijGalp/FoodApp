@@ -6,6 +6,7 @@ import retrofit2.http.Query
 import space.arkady.foodapp.models.CategoryList
 import space.arkady.foodapp.models.MealsByCategoryList
 import space.arkady.foodapp.models.MealList
+import space.arkady.foodapp.models.MealsByCategory
 
 interface MealAPI {
     @GET("random.php")
@@ -19,4 +20,8 @@ interface MealAPI {
 
     @GET("categories.php")
     fun getCategories(): Call<CategoryList>
+
+    @GET("filter.php")
+    fun getMealsByCategory(@Query("c") categoryName: String): Call<MealsByCategoryList>
+
 }
