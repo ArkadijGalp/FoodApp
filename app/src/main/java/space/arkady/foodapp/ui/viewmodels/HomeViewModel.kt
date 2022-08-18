@@ -21,9 +21,11 @@ class HomeViewModel(private val mealDatabase: MealDatabase) : ViewModel() {
     private var favoriteMealsLiveData = mealDatabase.mealDao().getAllMeals()
     private var bottomSheetMealLiveData = MutableLiveData<Meal>()
 
-    init {
+    // Call Init and delete function getRandomMeal() from HomeFragment ->
+    // if need to save the state of the main image
+/*    init {
         getRandomMeal()
-    }
+    }*/
 
     fun getRandomMeal() {
         RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealList> {
